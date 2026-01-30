@@ -14,6 +14,8 @@
       --accent: #4f7cff;
       --muted: #b5b5b5;
       --radius: 18px;
+      --green: #4CAF50;
+      --red: #ff4d4d;
     }
 
     * {
@@ -26,6 +28,7 @@
       background: var(--bg);
       color: var(--text-light);
       overflow-x: hidden;
+      position: relative;
     }
 
     .page {
@@ -54,7 +57,6 @@
       }
     }
 
-    /* HOME */
     .home-buttons {
       display: flex;
       gap: 30px;
@@ -148,7 +150,6 @@
       line-height: 1.4;
     }
 
-    /* RATING SUMMARY */
     .rating-summary {
       margin-top: 40px;
       display: flex;
@@ -225,15 +226,131 @@
     .back:hover {
       color: white;
     }
+
+    /* Preise */
+    .price-list {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Kontaktieren Button */
+    .contact-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--red);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* Popups */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+    }
+
+    .popup {
+      background: var(--bg);
+      color: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .popup .popup-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .popup .popup-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .popup .popup-btn.instagram {
+      background: #E1306C;
+      color: white;
+    }
+
+    .popup .popup-btn.discord {
+      background: #7289DA;
+      color: white;
+    }
+
+    /* Zurück zur Startseite Button */
+    .home-return-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 1000;
+    }
+
+    .home-return-btn:hover {
+      opacity: 0.9;
+    }
+
   </style>
 </head>
 <body>
+
+  <button class="home-return-btn" onclick="goTo('home')">← Zurück zur Startseite</button>
 
   <!-- HOME -->
   <div id="home" class="page active">
     <div class="home-buttons">
       <button class="btn" onclick="goTo('reviews')">Bewertungen</button>
       <button class="btn" onclick="goTo('videos')">Videos</button>
+      <button class="btn" onclick="goTo('preise')">Preise</button>
     </div>
   </div>
 
@@ -241,7 +358,7 @@
   <div id="reviews" class="page">
     <h1>Bewertungen</h1>
     <div class="subtitle">
-      Hier sind alle Bewertungen die ich je bekommen hat und der Sternen Durchschnitt
+      Hier sind alle Bewertungen die ich je bekommen hab und der Sternen Durchschnitt
     </div>
 
     <div class="review-card">
@@ -306,10 +423,59 @@
     <button class="back" onclick="goTo('home')">← Zurück</button>
   </div>
 
+  <!-- PREISE -->
+  <div id="preise" class="page">
+    <h1>Preise</h1>
+    <div class="subtitle">
+      Hier eine Übersicht über alle Preise:
+    </div>
+    <div class="price-list">
+      <div>Intros: 25€</div>
+      <div>Reactions: 25€</div>
+      <div>Gaming Videos / Vlogs / etc… 25€ pro 30 Minuten Rohdatei (z.B. 1 Stunde Rohdatei = 50€)</div>
+      <div>!WICHTIG! Intros werden nicht in den normalen Videopreis mit eingerechnet! Das bedeutet bei einem Video mit z.B. 1 Stunde Rohdatei kostet es mit Intro zusammen 75€!</div>
+    </div>
+
+    <button class="back" onclick="goTo('home')">← Zurück</button>
+  </div>
+
+  <!-- Kontaktieren Button -->
+  <button class="contact-btn" onclick="openPopup('contactPopup')">Kontaktieren</button>
+
+  <!-- Kontakt Popup -->
+  <div class="popup-overlay" id="contactPopup">
+    <div class="popup">
+      <button class="close" onclick="closePopup('contactPopup')">✕</button>
+      <h2>Hier kannst du mich kontaktieren!</h2>
+      <button class="popup-btn discord" onclick="openPopup('discordPopup')">
+        <img src="https://freelogopng.com/images/all_img/1691730767discord-logo-transparent.png"> Discord
+      </button>
+      <button class="popup-btn instagram" onclick="window.open('https://www.instagram.com/clippendesalpaka/','_blank')">
+        <img src="http://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> Instagram
+      </button>
+    </div>
+  </div>
+
+  <!-- Discord Popup -->
+  <div class="popup-overlay" id="discordPopup">
+    <div class="popup">
+      <button class="close" onclick="closePopup('discordPopup')">✕</button>
+      <h2>Discordname: ClippendesAlpaka</h2>
+    </div>
+  </div>
+
   <script>
     function goTo(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+    }
+
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
     }
   </script>
 
