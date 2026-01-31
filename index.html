@@ -7,18 +7,18 @@
 
   <style>
     :root {
-      --bg: radial-gradient(1200px 600px at 10% 10%, #1a1f2e, #0e0e11);
+      --bg-dark: #0b0b10;
       --card: #ffffff;
       --text-dark: #111;
       --text-light: #ffffff;
-      --accent: linear-gradient(135deg, #4f7cff, #6ee7ff);
-      --accent-flat: #4f7cff;
-      --muted: #a8a8b3;
+      --accent: linear-gradient(135deg, #ff3b3b, #ff6a6a);
+      --accent-flat: #ff3b3b;
+      --muted: #9a9aa5;
       --radius: 20px;
       --green: #4CAF50;
-      --red: #ff4d4d;
+      --red: #ff3b3b;
       --shadow-soft: 0 10px 30px rgba(0,0,0,0.25);
-      --shadow-strong: 0 25px 60px rgba(0,0,0,0.35);
+      --shadow-strong: 0 25px 60px rgba(0,0,0,0.45);
     }
 
     * {
@@ -28,9 +28,34 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+      background: var(--bg-dark);
       color: var(--text-light);
       overflow-x: hidden;
+    }
+
+    /* ===== RED GLOW CABLE BACKGROUND ===== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        url("data:image/svg+xml,%3Csvg width='1200' height='800' viewBox='0 0 1200 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-200 200 C200 100 400 300 800 200 1000 150 1300 250 1500 200' stroke='%23ff3b3b' stroke-width='2' fill='none' opacity='0.25'/%3E%3Cpath d='M-200 500 C300 650 600 350 900 450 1200 550 1500 400 1700 500' stroke='%23ff5a5a' stroke-width='3' fill='none' opacity='0.2'/%3E%3Cpath d='M-200 650 C250 550 500 750 850 650 1200 550 1500 700 1800 650' stroke='%23ff2f2f' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+      background-size: cover;
+      filter: blur(0.3px) drop-shadow(0 0 18px rgba(255,60,60,0.4));
+      animation: cablesFloat 20s linear infinite;
+    }
+
+    @keyframes cablesFloat {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(-40px) translateY(-20px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     .page {
@@ -68,19 +93,19 @@
       border: none;
       cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 12px 40px rgba(79,124,255,0.45);
+      box-shadow: 0 15px 45px rgba(255,60,60,0.5);
     }
 
     .btn:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 22px 65px rgba(110,231,255,0.55);
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 25px 70px rgba(255,80,80,0.65);
     }
 
     h1 {
       font-size: 48px;
       margin: 0;
       font-weight: 900;
-      background: linear-gradient(135deg, #ffffff, #bcd3ff);
+      background: linear-gradient(135deg, #ffffff, #ffb3b3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -154,13 +179,7 @@
       background: rgba(255,255,255,0.06);
       border-radius: var(--radius);
       padding: 18px 22px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: var(--shadow-soft);
-    }
-
-    .video-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-strong);
     }
 
     .video-item a {
@@ -270,11 +289,6 @@
       font-size: 16px;
     }
 
-    .popup-btn img {
-      width: 24px;
-      height: 24px;
-    }
-
     .popup-btn.instagram {
       background: #E1306C;
       color: white;
@@ -302,6 +316,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <button class="home-return-btn" onclick="goTo('home')">← Zurück zur Startseite</button>
@@ -334,14 +349,11 @@
   <button class="back" onclick="goTo('home')">← Zurück</button>
 </div>
 
- <!-- VIDEOS -->
-  <div id="videos" class="page">
-    <h1>Videos</h1>
-    <div class="subtitle">
-      Hier siehst du alle Videos die ich jemals geschnitten habe:
-    </div>
+<div id="videos" class="page">
+  <h1>Videos</h1>
+  <div class="subtitle">Hier siehst du alle Videos die ich jemals geschnitten habe:</div>
 
-    <div class="video-list">
+<div class="video-list">
       <div class="video-item"><a href="https://www.youtube.com/watch?v=dv-W8GkW4yM" target="_blank">https://www.youtube.com/watch?v=dv-W8GkW4yM</a></div>
       <div class="video-item"><a href="https://www.youtube.com/watch?v=z1qssaCbelk" target="_blank">https://www.youtube.com/watch?v=z1qssaCbelk</a></div>
       <div class="video-item"><a href="https://www.youtube.com/watch?v=synS4Q29XdI" target="_blank">https://www.youtube.com/watch?v=synS4Q29XdI</a></div>
@@ -366,8 +378,8 @@
       </div>
     </div>
 
-    <button class="back" onclick="goTo('home')">← Zurück</button>
-  </div>
+  <button class="back" onclick="goTo('home')">← Zurück</button>
+</div>
 
 <div id="preise" class="page">
   <h1>Preise</h1>
