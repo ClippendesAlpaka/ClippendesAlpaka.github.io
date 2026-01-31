@@ -318,7 +318,6 @@
 </head>
 
 <body>
-
 <button class="home-return-btn" onclick="goTo('home')">← Zurück zur Startseite</button>
 
 <div id="home" class="page active">
@@ -353,30 +352,30 @@
   <h1>Videos</h1>
   <div class="subtitle">Hier siehst du alle Videos die ich jemals geschnitten habe:</div>
 
-<div class="video-list">
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=dv-W8GkW4yM" target="_blank">https://www.youtube.com/watch?v=dv-W8GkW4yM</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=z1qssaCbelk" target="_blank">https://www.youtube.com/watch?v=z1qssaCbelk</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=synS4Q29XdI" target="_blank">https://www.youtube.com/watch?v=synS4Q29XdI</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=giba4tU8kSQ" target="_blank">https://www.youtube.com/watch?v=giba4tU8kSQ</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=dctgPRcWXUk" target="_blank">https://www.youtube.com/watch?v=dctgPRcWXUk</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=uRyXiFwjaOQ" target="_blank">https://www.youtube.com/watch?v=uRyXiFwjaOQ</a></div>
-      <div class="video-item"><a href="https://www.youtube.com/watch?v=0sj0fJEteQ8" target="_blank">https://www.youtube.com/watch?v=0sj0fJEteQ8</a></div>
+  <div class="video-list">
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=dv-W8GkW4yM" target="_blank">https://www.youtube.com/watch?v=dv-W8GkW4yM</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=z1qssaCbelk" target="_blank">https://www.youtube.com/watch?v=z1qssaCbelk</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=synS4Q29XdI" target="_blank">https://www.youtube.com/watch?v=synS4Q29XdI</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=giba4tU8kSQ" target="_blank">https://www.youtube.com/watch?v=giba4tU8kSQ</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=dctgPRcWXUk" target="_blank">https://www.youtube.com/watch?v=dctgPRcWXUk</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=uRyXiFwjaOQ" target="_blank">https://www.youtube.com/watch?v=uRyXiFwjaOQ</a></div>
+    <div class="video-item"><a href="https://www.youtube.com/watch?v=0sj0fJEteQ8" target="_blank">https://www.youtube.com/watch?v=0sj0fJEteQ8</a></div>
 
-      <div class="video-item">
-        <div class="tag">Nur Intro</div>
-        <a href="https://youtu.be/v45G3lvu448?si=O4rtNWFk_g6XpsMO" target="_blank">https://youtu.be/v45G3lvu448</a>
-      </div>
-
-      <div class="video-item">
-        <div class="tag">Nur Intro</div>
-        <a href="https://youtu.be/5Ao5S7vGyY8?si=f7AhGBqKBoooQ_2t" target="_blank">https://youtu.be/5Ao5S7vGyY8</a>
-      </div>
-
-      <div class="video-item">
-        <div class="tag">Nur Intro</div>
-        <a href="https://youtu.be/CahVhLGzMoQ?si=lOkmdb7WBURzf28F" target="_blank">https://youtu.be/CahVhLGzMoQ</a>
-      </div>
+    <div class="video-item">
+      <div class="tag">Nur Intro</div>
+      <a href="https://youtu.be/v45G3lvu448?si=O4rtNWFk_g6XpsMO" target="_blank">https://youtu.be/v45G3lvu448</a>
     </div>
+
+    <div class="video-item">
+      <div class="tag">Nur Intro</div>
+      <a href="https://youtu.be/5Ao5S7vGyY8?si=f7AhGBqKBoooQ_2t" target="_blank">https://youtu.be/5Ao5S7vGyY8</a>
+    </div>
+
+    <div class="video-item">
+      <div class="tag">Nur Intro</div>
+      <a href="https://youtu.be/CahVhLGzMoQ?si=lOkmdb7WBURzf28F" target="_blank">https://youtu.be/CahVhLGzMoQ</a>
+    </div>
+  </div>
 
   <button class="back" onclick="goTo('home')">← Zurück</button>
 </div>
@@ -396,12 +395,22 @@
 
 <button class="contact-btn" onclick="openPopup('contactPopup')">Kontaktieren</button>
 
+<!-- Kontakt-Popup -->
 <div class="popup-overlay" id="contactPopup">
   <div class="popup">
     <button class="close" onclick="closePopup('contactPopup')">✕</button>
     <h2>Kontakt</h2>
-    <button class="popup-btn discord">Discord</button>
-    <button class="popup-btn instagram">Instagram</button>
+    <button class="popup-btn discord" onclick="openDiscordPopup()">Discord</button>
+    <button class="popup-btn instagram" onclick="window.open('https://www.instagram.com/clippendesalpaka/', '_blank')">Instagram</button>
+  </div>
+</div>
+
+<!-- Neues Discord-Popup -->
+<div class="popup-overlay" id="discordPopup">
+  <div class="popup">
+    <button class="close" onclick="closePopup('discordPopup')">✕</button>
+    <h2>Discord</h2>
+    <p>Discordname: <strong>ClippendesAlpaka</strong></p>
   </div>
 </div>
 
@@ -410,9 +419,15 @@ function goTo(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
 function openPopup(id){ document.getElementById(id).style.display='flex'; }
 function closePopup(id){ document.getElementById(id).style.display='none'; }
-</script>
 
+// Neues Discord-Popup öffnen
+function openDiscordPopup(){
+  closePopup('contactPopup'); // optional
+  openPopup('discordPopup');
+}
+</script>
 </body>
 </html>
