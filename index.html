@@ -321,10 +321,16 @@
 <button class="home-return-btn" onclick="goTo('home')">← Zurück zur Startseite</button>
 
 <div id="home" class="page active">
+
+  <!-- HINZUGEFÜGT -->
+  <div class="subtitle" style="font-size:22px;font-weight:700;color:white;margin-bottom:30px;">
+    Preis: 40€ pro Stunde
+  </div>
+
   <div class="home-buttons">
     <button class="btn" onclick="goTo('reviews')">Bewertungen</button>
     <button class="btn" onclick="goTo('videos')">Videos</button>
-    <button class="btn" onclick="goTo('preise')">Preise</button>
+    <!-- PREISE BUTTON ENTFERNT -->
   </div>
 </div>
 
@@ -395,7 +401,6 @@
 
 <button class="contact-btn" onclick="openPopup('contactPopup')">Kontaktieren</button>
 
-<!-- Kontakt-Popup -->
 <div class="popup-overlay" id="contactPopup">
   <div class="popup">
     <button class="close" onclick="closePopup('contactPopup')">✕</button>
@@ -405,7 +410,6 @@
   </div>
 </div>
 
-<!-- Neues Discord-Popup -->
 <div class="popup-overlay" id="discordPopup">
   <div class="popup">
     <button class="close" onclick="closePopup('discordPopup')">✕</button>
@@ -423,9 +427,8 @@ function goTo(id){
 function openPopup(id){ document.getElementById(id).style.display='flex'; }
 function closePopup(id){ document.getElementById(id).style.display='none'; }
 
-// Neues Discord-Popup öffnen
 function openDiscordPopup(){
-  closePopup('contactPopup'); // optional
+  closePopup('contactPopup');
   openPopup('discordPopup');
 }
 </script>
